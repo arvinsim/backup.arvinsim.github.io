@@ -1,6 +1,9 @@
 * {
   border-sizing: border-box; }
 
+html, button, input, select, textarea, p, div, .pure-g [class*="pure-u"] {
+  font-family: 'Inconsolata', sans-serif; }
+
 body {
   background: url('../images/background.png') repeat scroll 0% 0% #476A34; }
 
@@ -12,8 +15,7 @@ body {
   height: 65%;
   top: 200px;
   left: 0px;
-  position: fixed !important;
-  font-family: 'Inconsolata'; }
+  position: fixed !important; }
   .landing .header {
     color: #5DFC0A;
     text-align: center; }
