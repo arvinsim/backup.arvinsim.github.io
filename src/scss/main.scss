@@ -1,0 +1,73 @@
+// Color Theme Inspiration 
+// http://www.colourlovers.com/palette/580974/Adrift_in_Dreams
+/*$primary-color: hsl(202, 81%, 23%);*/
+/*$secondary-color: hsl(180, 39%, 38%);*/
+/*$tertiary-color: hsl(149, 34%, 61%);*/
+/*$fourth-color: hsl(120, 41%, 76%);*/
+/*$fifth-color: hsl(84, 73%, 78%);*/
+
+$black: #000000;
+$green: #476A34;
+$light-green: #5DFC0A;
+$gray: #6E706E;
+
+* {
+    border-sizing: border-box;
+}
+
+html, button, input, select, textarea, p, div, .pure-g [class *= "pure-u"] {
+    font-family: 'Inconsolata', sans-serif;
+}
+
+body {
+    background: url('../images/background.png') repeat scroll 0% 0% $green;
+}
+
+.landing {
+    background: none repeat scroll 0% 0% $black;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 91%;
+    top: 50px;
+    left: 0px;
+    position: fixed !important;
+
+    .header {
+        color: $light-green;
+        text-align: center;
+        h1 {
+            font-size: 0.5em;
+        }
+    }
+
+    .terminal {
+        a {
+            text-decoration: none;
+            color: cyan;
+        }
+
+        ul {
+            display: inline;
+
+            li {
+                list-style-type: none;
+            }
+        }
+        margin-left: 20%;
+
+        .command {
+            .prompt {
+                color: $light-green;
+            }
+
+            .input {
+                color: $gray;
+            }
+
+            .output {
+                color: $gray;
+            }
+        }
+    }
+}
