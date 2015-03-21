@@ -18,14 +18,20 @@ var directories = {
         scripts: "public/static/scripts/",
         styles: "public/static/css/",
         images: "public/static/images"
-    }
+    },
+    watch: {
+        jade: ["src/templates/**/*.jade"],
+        scripts: ["src/scripts/**/*.js"],
+        styles: ["src/scss/**/*.scss"],
+        images: ["src/images/**/*.png"]
+    },
 };
 
 gulp.task("default", ["jade", "scripts", "styles", "images"], function taskDefault() {
-    gulp.watch(directories.src.jade, ["jade"]);
-    gulp.watch(directories.src.scripts, ["scripts"]);
-    gulp.watch(directories.src.styles, ["styles"]);
-    gulp.watch(directories.src.images, ["images"]);
+    gulp.watch(directories.watch.jade, ["jade"]);
+    gulp.watch(directories.watch.scripts, ["scripts"]);
+    gulp.watch(directories.watch.styles, ["styles"]);
+    gulp.watch(directories.watch.images, ["images"]);
 });
 
 gulp.task("serve", serve("public"));

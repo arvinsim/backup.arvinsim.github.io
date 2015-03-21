@@ -1,20 +1,19 @@
-doctype html
-html(lang=en)
-    head
-        title 
-    body
-        header
-        main
-            .site-feed.artem
-                each val in [1,2,3,4,5,6,7,8,9]
-                .item
-                    .thumbnail
-                    .title
-                    .summary
-            .site-feed.techblog
-                each val in [1,2,3,4,5,6,7,8,9]
-                .item
-                    .thumbnail
-                    .title
-                    .summary
-        footer 
+extends ./layouts/default.jade
+
+block head
+    title Arvinsim
+block header
+    p This is the header
+block content
+    .site-feed.artem
+        .title site title
+        each val in [1,2,3,4,5,6,7,8,9]
+            .item
+                figure.thumbnail
+                    img(src="http://placehold.it/100/100",alt="item thumbnail")
+                .title title
+                .summary summary
+block scripts
+    script(src='scripts/main.js')
+block footer
+    p background pattern by subtlepatterns.com
