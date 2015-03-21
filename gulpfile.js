@@ -2,6 +2,7 @@ var gulp = require("gulp");
 //var sass = require("gulp-sass");
 var jade = require("gulp-jade");
 var plumber = require("gulp-plumber");
+var serve = require("gulp-serve");
 
 var directories = {
     src: {
@@ -33,6 +34,8 @@ gulp.task("scripts", function taskScripts() {
         .pipe(plumber())
         .pipe(gulp.dest(directories.dest.javascript));
 });
+
+gulp.task("serve", serve("public"));
 
 // TODO: Task for outputting scss to minified css
 // TODO: Task for minifying images
