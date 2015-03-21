@@ -1,5 +1,5 @@
 var gulp = require("gulp");
-//var sass = require("gulp-sass");
+var sass = require("gulp-sass");
 var jade = require("gulp-jade");
 var plumber = require("gulp-plumber");
 var serve = require("gulp-serve");
@@ -7,20 +7,25 @@ var serve = require("gulp-serve");
 var directories = {
     src: {
         jade: ["src/templates/index.jade"],
-        javascript: ["src/scripts/main.js"]
+        scripts: ["src/scripts/main.js"],
+        styles: ["src/scss/main.scss"]
     },
     dest: {
         jade: "public",
-        javascript: "public/static/scripts/"
+        scripts: "public/static/scripts/",
+        styles: "public/static/css/"
     }
 };
 
-gulp.task("default", ["jade", "scripts"], function taskDefault() {
+gulp.task("default", ["jade", "scripts", "styles"], function taskDefault() {
     gulp.watch(directories.src.jade, ["jade"]);
-    gulp.watch(directories.src.javascript, ["scripts"]);
+    gulp.watch(directories.src.scripts, ["scripts"]);
+    gulp.watch(directories.src.styles, ["styles"]);
 });
 
-// TODO: Task for outputting the template to a single, minified html file
+gulp.task("serve", serve("public"));
+
+// Task for outputting the template to a single, minified html file
 gulp.task("jade", function taskJade() {
     return gulp.src(directories.src.jade)
         .pipe(plumber())
@@ -28,14 +33,21 @@ gulp.task("jade", function taskJade() {
         .pipe(gulp.dest(directories.dest.jade));
 });
 
-// TODO: Compile javascript
+// Task to compile javascript into one file
+// TODO: Compile and minify javascript
 gulp.task("scripts", function taskScripts() {
-    return gulp.src(directories.src.javascript)
+    return gulp.src(directories.src.scripts)
         .pipe(plumber())
-        .pipe(gulp.dest(directories.dest.javascript));
+        .pipe(gulp.dest(directories.dest.scripts));
 });
 
-gulp.task("serve", serve("public"));
+// Task for outputting scss to css
+// TODO: Minify
+gulp.task("styles", function taskStyles() {
+    return gulp.src(directories.src.styles)
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(gulp.dest(directories.dest.styles));
+});
 
-// TODO: Task for outputting scss to minified css
 // TODO: Task for minifying images
