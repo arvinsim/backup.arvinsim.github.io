@@ -1,26 +1,31 @@
 var gulp = require("gulp");
-var sass = require("gulp-sass");
-var jade = require("gulp-jade");
 var plumber = require("gulp-plumber");
 var serve = require("gulp-serve");
+
+var jade = require("gulp-jade");
+var sass = require("gulp-sass");
+var image = require("gulp-image");
 
 var directories = {
     src: {
         jade: ["src/templates/index.jade"],
         scripts: ["src/scripts/main.js"],
-        styles: ["src/scss/main.scss"]
+        styles: ["src/scss/main.scss"],
+        images: ["src/images/**/*.png"]
     },
     dest: {
         jade: "public",
         scripts: "public/static/scripts/",
-        styles: "public/static/css/"
+        styles: "public/static/css/",
+        images: "public/static/images"
     }
 };
 
-gulp.task("default", ["jade", "scripts", "styles"], function taskDefault() {
+gulp.task("default", ["jade", "scripts", "styles", "images"], function taskDefault() {
     gulp.watch(directories.src.jade, ["jade"]);
     gulp.watch(directories.src.scripts, ["scripts"]);
     gulp.watch(directories.src.styles, ["styles"]);
+    gulp.watch(directories.src.images, ["images"]);
 });
 
 gulp.task("serve", serve("public"));
@@ -51,3 +56,9 @@ gulp.task("styles", function taskStyles() {
 });
 
 // TODO: Task for minifying images
+gulp.task("images", function taskImages() {
+    gulp.src(directories.src.images)
+        .pipe(plumber())
+        .pipe(image())
+        .pipe(gulp.dest(directories.dest.images));
+});
