@@ -1,39 +1,20 @@
 doctype html
-html
+html(lang=en)
     head
-        include ./head.jade
+        title 
     body
-        div.pure-g.main
-            div.pure-u-1.landing
-                div.header
-                    include ./header.jade
-                div.terminal
-                    div.command
-                        span.prompt arvinsim@github $&nbsp;
-                        span.input who
-                        div.output arvinsim tty8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-02-08 07:33 (:0)
-                    div.command
-                        span.prompt arvinsim@github $ 
-                        span.input mail&nbsp;
-                            a(href='mailto:developarvin+github@gmail.com') developarvin plus github at gmail dot com 
-                        div.output
-                            p Subject: Welcome!
-                            p Hi,
-                            p This is a portal page to my other Github pages. The blue colored text here are either links to the github page sites or my contact email. 
-                            p Feel free to check them out.
-                            p Have a nice day,
-                            p Arthur
-                            p Cc:
-                    div.command
-                        span.prompt arvinsim@github $ 
-                        span.input cat ./github-pages
-                        div.output
-                            ul
-                                li
-                                    a(href='http://developarvin.blogspot.com', target='_blank') Old Tech Blog(default)
-                                li
-                                    a(href='http://arvinsim.github.io/techblog', target='_blank') Tech Blog
-                                li
-                                    a(href='http://arvinsim.github.io/artem', target='_blank') Arts Blog
-                    div.command
-                        span.prompt arvinsim@github $ 
+        header
+        main
+            .site-feed.artem
+                each val in [1,2,3,4,5,6,7,8,9]
+                .item
+                    .thumbnail
+                    .title
+                    .summary
+            .site-feed.techblog
+                each val in [1,2,3,4,5,6,7,8,9]
+                .item
+                    .thumbnail
+                    .title
+                    .summary
+        footer 
